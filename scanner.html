@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#07111f">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Hostel Event Committee — Scanner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="scanner-page">
+
+    <header class="scanner-header">
+      <div class="header-brand">
+        <div class="institution-logos" aria-label="VIT Bhopal University and Hostel Event Committee">
+          <img
+            class="institution-logo vit-logo"
+            src="assets/vit-bhopal-logo.png"
+            alt="VIT Bhopal University logo"
+          >
+          <span class="logo-divider" aria-hidden="true"></span>
+          <img
+            class="institution-logo hostel-logo"
+            src="assets/hostel-event-committee-logo.png"
+            alt="Hostel Event Committee logo"
+          >
+        </div>
+
+        <div class="institution-title">
+          <div class="university-name">VIT BHOPAL UNIVERSITY</div>
+          <div class="committee-name">HOSTEL EVENT COMMITTEE</div>
+          <h1>Entry Scanner</h1>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button id="soundButton" class="icon-button active" type="button" title="Sound enabled" aria-label="Toggle scan sounds">🔊</button>
+        <button id="fullscreenButton" class="icon-button" type="button" title="Fullscreen" aria-label="Enter fullscreen">⛶</button>
+        <a class="small-button" href="index.html">HOME</a>
+      </div>
+    </header>
+
+    <section class="scanner-shell">
+
+      <div class="scanner-topbar">
+        <div class="live-indicator">
+          <span id="liveDot" class="live-dot"></span>
+          <span id="liveText">SCANNER READY</span>
+        </div>
+        <div class="topbar-hint">Point QR at the guide</div>
+      </div>
+
+      <div id="cameraArea" class="camera-area">
+        <video id="video" playsinline muted autoplay></video>
+        <canvas id="canvas" hidden></canvas>
+
+        <div class="camera-overlay"></div>
+
+        <div class="scan-frame" aria-hidden="true">
+          <span class="corner top-left"></span>
+          <span class="corner top-right"></span>
+          <span class="corner bottom-left"></span>
+          <span class="corner bottom-right"></span>
+          <div class="scan-line"></div>
+          <div class="scan-target">ALIGN QR HERE</div>
+        </div>
+
+        <div id="cameraMessage" class="camera-message">
+          Press START CAMERA to begin.
+        </div>
+
+        <div class="camera-tools">
+          <button id="torchButton" class="camera-tool" type="button" title="Toggle flashlight" aria-label="Toggle flashlight">◉</button>
+          <button id="switchCameraButton" class="camera-tool" type="button" title="Switch camera" aria-label="Switch camera">↻</button>
+        </div>
+
+        <div class="camera-badge">REAR CAMERA PREFERRED</div>
+      </div>
+
+      <div class="controls">
+        <button id="startButton" class="primary-button control-button" type="button">
+          <span class="button-icon">▶</span> START CAMERA
+        </button>
+        <button id="stopButton" class="secondary-button control-button" type="button" disabled>
+          <span class="button-icon">■</span> STOP
+        </button>
+      </div>
+
+      <div id="status" class="status neutral" role="status" aria-live="polite">
+        Press START CAMERA and allow camera permission.
+      </div>
+
+      <div class="operator-row">
+        <label for="operator">SCANNER / GATE OPERATOR <span>OPTIONAL</span></label>
+        <input id="operator" type="text" maxlength="80" autocomplete="name" placeholder="Enter operator name">
+      </div>
+
+      <div class="quick-hint">
+        <span class="hint-icon">✓</span>
+        <span>One QR is verified at a time. The result appears immediately below the camera.</span>
+      </div>
+    </section>
+
+    <section id="resultCard" class="result-card hidden" aria-live="assertive">
+      <div id="resultGlow" class="result-glow"></div>
+      <div class="result-icon" id="resultIcon">✓</div>
+      <div id="resultStatus" class="result-status">READY</div>
+      <div id="resultMessage" class="result-message"></div>
+      <div id="resultDetails" class="result-details"></div>
+
+      <div class="result-actions">
+        <button id="scanAgainButton" class="primary-button scan-next-button" type="button">
+          SCAN NEXT QR <span aria-hidden="true">→</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="operator-panel">
+      <div class="operator-panel-title">GATE OPERATOR QUICK GUIDE</div>
+      <div class="operator-guide">
+        <div><span class="guide-number">1</span><span>Start camera</span></div>
+        <div><span class="guide-number">2</span><span>Align QR</span></div>
+        <div><span class="guide-number">3</span><span>Wait for beep + result</span></div>
+        <div><span class="guide-number">4</span><span>Scan next participant</span></div>
+      </div>
+    </section>
+
+    <footer class="scanner-footer">
+      VIT BHOPAL UNIVERSITY • HOSTEL EVENT COMMITTEE • OFFICIAL ENTRY VERIFICATION
+    </footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+  <script src="scanner.js"></script>
+</body>
+</html>
